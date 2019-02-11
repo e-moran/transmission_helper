@@ -1,0 +1,45 @@
+$headerColour: #DADDD8;
+$evenColour: #DCF4E1;
+//$oddColour: #EDFF86;
+$oddColour: #E6F4E9;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.results {
+  table {
+    border-collapse: collapse;
+    border: $headerColour 1px solid;
+    max-width: 80vw;
+
+    tr:nth-child(odd) {
+      background-color: $oddColour;
+    }
+
+    tr:nth-child(even) {
+      background-color: $evenColour;
+    }
+
+    tr:first-child {
+      background-color: $headerColour;
+    }
+
+    tr td {
+      white-space: nowrap;
+    }
+
+    tr td:first-child {
+      max-width: 70vw;
+      white-space: unset;
+      word-break: break-all;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.3em;
+    }
+  }
+}

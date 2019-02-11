@@ -1,0 +1,8 @@
+#IntelliJ IDEA files
+.idea/
+
+
+node_modules/
+
+#Compiled Angular App
+public/

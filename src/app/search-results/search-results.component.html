@@ -1,0 +1,17 @@
+<div class="results" *ngIf="_term && searchResults">
+  <table *ngIf="searchResults.results.length > 0; else noResults;">
+    <tr>
+      <th>Name:</th>
+      <th>Speed:</th>
+      <th>Size:</th>
+    </tr>
+    <tr *ngFor="let result of searchResults.results">
+      <td>{{ result.name }}</td>
+      <td>{{ result.seeds/result.leeches | number:'1.0-2' }}</td>
+      <td>{{ result.size }}</td>
+    </tr>
+  </table>
+  <ng-template #noResults>
+    No Results!
+  </ng-template>
+</div>
