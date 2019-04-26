@@ -9,12 +9,16 @@ class App {
 
     constructor() {
         this.app = express();
-        this.config();
         this.apiRoutes.routes(this.app);
+        this.config();
     }
 
     private config() {
         this.app.use(express.static(path.join(__dirname, '../public')));
+        this.app.all('/*', (req, res) => {
+            // Just send the index.html for other files to support HTML5Mode
+            res.sendFile('index.html', { root: __dirname + '/../public'});
+        });
         // support application/json type post data
         this.app.use(bodyParser.json());
 
