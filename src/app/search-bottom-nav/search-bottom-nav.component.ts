@@ -22,9 +22,9 @@ export class SearchBottomNavComponent implements OnInit {
   }
 
   public addTorrents() {
-    this._selectedArray.forEach((res, i) => {
+    this._selectedArray.forEach((res) => {
       this.searchApi.getMagnet(res.url, res.provider).subscribe(magnetValue => {
-        this.transmissionApi.addTorrent(magnetValue.magnetUrl).subscribe(value => console.log(value));
+        this.transmissionApi.addTorrent(magnetValue.magnetUrl);
       });
     });
   }
