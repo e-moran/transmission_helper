@@ -1,0 +1,22 @@
+<form *ngIf="loaded" [formGroup]="configForm" (ngSubmit)="onSubmit()">
+
+    <label for="rpcUrl">RPC Url:</label>
+    <input type="text" id="rpcUrl" formControlName="rpcUrl" />
+    <br />
+    <label for="requiresAuth">Requires Auth:</label>
+    <input type="checkbox" id="requiresAuth" formControlName="requiresAuth" />
+    <br />
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username" />
+    <br />
+    <label for="password">Password:</label>
+    <input type="text" id="password" formControlName="password" />
+    <br />
+    <label for="movieDirectory">Movies Directory:</label>
+    <input type="text" id="movieDirectory" formControlName="movieDirectory" />
+    <br />
+    <label for="tvDirectory">TV Directory:</label>
+    <input type="text" id="tvDirectory" formControlName="tvDirectory" />
+    <br />
+    <input type="submit">
+</form>

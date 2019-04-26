@@ -8,11 +8,12 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServerConfigService {
-  private configUrl = '/api/getconfig';
+  private getConfigUrl = '/api/getconfig';
+  private setConfigUrl = '/api/setconfig';
 
   constructor(private http: HttpClient) { }
   public getServerConfig(): Observable<ServerConfig> {
-    return this.http.get<ServerConfigResponse>(this.configUrl)
+    return this.http.get<ServerConfigResponse>(this.getConfigUrl)
         .pipe(
             map( (resp: ServerConfigResponse) => {
               return resp.conf;
@@ -21,5 +22,8 @@ export class ServerConfigService {
               return throwError(error);
             })
         );
+  }
+  public updateServerConfig(conf: ServerConfig): Observable<any> {
+      return this.http.post(this.setConfigUrl, conf);
   }
 }
