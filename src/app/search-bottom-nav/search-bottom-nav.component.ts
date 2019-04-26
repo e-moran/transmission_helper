@@ -26,6 +26,8 @@ export class SearchBottomNavComponent implements OnInit {
       this.searchApi.getMagnet(res.url, res.provider).subscribe(magnetValue => {
         this.transmissionApi.addTorrent(magnetValue.magnetUrl);
       });
+      res.clicked = false;
     });
+    this._selectedArray.splice(0, this._selectedArray.length);
   }
 }
