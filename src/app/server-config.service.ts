@@ -8,7 +8,7 @@ import {catchError, map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ServerConfigService {
-  private configUrl = '/api/getConfig';
+  private configUrl = '/api/getconfig';
 
   constructor(private http: HttpClient) { }
   public getServerConfig(): Observable<ServerConfig> {
