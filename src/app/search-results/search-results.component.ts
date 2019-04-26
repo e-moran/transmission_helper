@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchApiService } from '../search-api.service';
-import { SearchResult } from '../searchresult';
+import { Result, SearchResult} from '../searchresult';
+import { TransmissionService } from '../transmission.service';
 
 @Component({
   selector: 'app-search-results',
@@ -12,7 +13,7 @@ export class SearchResultsComponent implements OnInit {
   public _term: string;
   public searchResults: SearchResult;
 
-  constructor(private searchApi: SearchApiService) { }
+  constructor(private searchApi: SearchApiService, private transmissionApi: TransmissionService) { }
 
   ngOnInit() {
   }
@@ -27,5 +28,10 @@ export class SearchResultsComponent implements OnInit {
 
   private search() {
     this.searchApi.search(this._term).subscribe(value => this.searchResults = value);
+  }
+  public addTorrent(torrent: Result) {
+    this.searchApi.getMagnet(torrent.url, torrent.provider).subscribe(magnetValue => {
+      this.transmissionApi.addTorrent(magnetValue.magnetUrl).subscribe(value => console.log(value));
+    });
   }
 }

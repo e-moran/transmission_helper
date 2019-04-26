@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "build": "tsc",
-    "dev": "ng build --watch & ts-node ./server/server.ts",
+    "dev": "ng build --watch & ts-node ./server/server.ts & corsproxy",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start"
   },
@@ -21,6 +21,7 @@
     "@types/express": "^4.16.1",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
+    "corsproxy": "^1.5.0",
     "express": "^4.16.4",
     "expressjs": "^1.0.1",
     "nodemon": "^1.18.9",

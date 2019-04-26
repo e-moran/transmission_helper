@@ -11,3 +11,8 @@ export interface Result {
     url: string;
     provider: string;
 }
+
+export interface MagnetResult {
+    response: string;
+    magnetUrl: string;
+}
