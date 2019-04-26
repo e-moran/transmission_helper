@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { SearchReultsController } from '../controllers/searchReultsController';
 import { MirrorResultController } from '../controllers/mirrorResultController';
+import {GetServerConfigController} from '../controllers/getServerConfigController';
 
 export class Routes {
     public routes(app): void {
@@ -44,6 +45,20 @@ export class Routes {
                         message: error
                     });
                     console.log(error);
+                });
+            });
+        app.route('/api/getconfig')
+            .get((req: Request, res: Response) => {
+                GetServerConfigController.getServerConfig().then(config => {
+                    res.json( {
+                        response: 'success',
+                        conf: config
+                    });
+                }).catch(error => {
+                    res.json({
+                        response: 'error',
+                        message: error
+                    });
                 });
             });
     }
