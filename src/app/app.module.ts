@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchComponent } from './search/search.component';
 import { TransmissionInterceptor } from './transmission.interceptor';
+import { SearchBottomNavComponent } from './search-bottom-nav/search-bottom-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchResultsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchBottomNavComponent
   ],
   imports: [
     BrowserModule,

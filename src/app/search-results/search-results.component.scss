@@ -8,7 +8,14 @@ $oddColour: #E6F4E9;
   border-radius: $radius;
 }
 
+.results-wrapper {
+  position: relative;
+  margin-top: 2rem;
+}
+
 .results {
+  z-index: 0;
+  margin-bottom: 2rem;
   table {
     border-collapse: collapse;
     border: $headerColour 1px solid;
@@ -41,4 +48,19 @@ $oddColour: #E6F4E9;
       padding: 0.3em;
     }
   }
+}
+
+.results-footer {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  height: 1.5rem;
+  width: 100%;
+  max-width: 80vw;
+  margin-bottom: 0.25rem;
+  background-color: lightgray;
+}
+
+.clicked {
+  font-weight: bold;
 }

@@ -12,8 +12,10 @@ export class SearchResultsComponent implements OnInit {
 
   public _term: string;
   public searchResults: SearchResult;
+  public selectedArray: Result[] = [];
 
-  constructor(private searchApi: SearchApiService, private transmissionApi: TransmissionService) { }
+  constructor(private searchApi: SearchApiService) {
+  }
 
   ngOnInit() {
   }
@@ -29,9 +31,16 @@ export class SearchResultsComponent implements OnInit {
   private search() {
     this.searchApi.search(this._term).subscribe(value => this.searchResults = value);
   }
-  public addTorrent(torrent: Result) {
-    this.searchApi.getMagnet(torrent.url, torrent.provider).subscribe(magnetValue => {
-      this.transmissionApi.addTorrent(magnetValue.magnetUrl).subscribe(value => console.log(value));
-    });
+  public toggleTorrent(torrent: Result) {
+    if (!torrent.clicked) {
+      this.selectedArray.push(torrent);
+      torrent.clicked = true;
+    } else {
+      const index = this.selectedArray.indexOf(torrent);
+      if (index !== -1) {
+        this.selectedArray.splice(index, 1);
+      }
+      torrent.clicked = false;
+    }
   }
 }

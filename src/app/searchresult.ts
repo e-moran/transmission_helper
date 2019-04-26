@@ -3,13 +3,14 @@ export interface SearchResult {
     results: Result[];
 }
 
-export interface Result {
+export class Result {
     name: string;
     seeds: number;
     leeches: number;
     size: string;
     url: string;
     provider: string;
+    clicked = false;
 }
 
 export interface MagnetResult {
