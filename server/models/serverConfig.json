@@ -1,10 +1,1 @@
-{
-  "transmissionConfig": {
-    "requiresAuth": false,
-    "username": "",
-    "password": "",
-    "rpcUrl": "localhost:9091/transmission/rpc"
-  },
-  "moviesFolder": "/PLEX/Movies",
-  "tvShowsFolder": "/PLEX/TVShows"
-}
+{"transmissionConfig":{"rpcUrl":"localhost:9091/transmission/rpc","requiresAuth":false,"username":"te","password":""},"moviesFolder":"/PLEX/Movies","tvShowsFolder":"/PLEX/TVShows"}

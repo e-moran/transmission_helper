@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { SearchReultsController } from '../controllers/searchReultsController';
 import { MirrorResultController } from '../controllers/mirrorResultController';
-import {GetServerConfigController} from '../controllers/getServerConfigController';
+import { GetServerConfigController } from '../controllers/getServerConfigController';
+import { SetServerConfigController } from '../controllers/setServerConfigController';
 
 export class Routes {
     public routes(app): void {
@@ -59,6 +60,13 @@ export class Routes {
                         response: 'error',
                         message: error
                     });
+                });
+            });
+        app.route('/api/setconfig')
+            .post((req: Request, res: Response) => {
+                const controller = new SetServerConfigController(req.body);
+                res.json({
+                   success: controller.setServerConfig(),
                 });
             });
     }
