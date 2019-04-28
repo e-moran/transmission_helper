@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Result } from '../searchresult';
 
 @Component({
   selector: 'app-search',
@@ -9,6 +10,7 @@ export class SearchComponent implements OnInit {
 
   public term: string;
   private tempTerm: string;
+  public selectedArray: Result[] = [];
   constructor() { }
 
   ngOnInit() {

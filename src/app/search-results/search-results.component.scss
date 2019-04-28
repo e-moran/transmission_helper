@@ -1,66 +1,21 @@
-$headerColour: #DADDD8;
-$evenColour: #DCF4E1;
-$oddColour: #E6F4E9;
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  border-radius: $radius;
-}
-
-.results-wrapper {
-  position: relative;
-  margin-top: 2rem;
-}
+@import "../_variables.scss";
 
 .results {
+  max-width: 40rem;
+  margin-top: 5rem;
+  padding: 0.5rem;
   z-index: 0;
-  margin-bottom: 2rem;
-  table {
-    border-collapse: collapse;
-    border: $headerColour 1px solid;
-    max-width: 80vw;
 
-    tr:nth-child(odd) {
-      background-color: $oddColour;
-    }
+  mat-card {
+    margin-bottom: 10px;
+    background-color: $accent;
+  }
 
-    tr:nth-child(even) {
-      background-color: $evenColour;
-    }
-
-    tr:first-child {
-      background-color: $headerColour;
-    }
-
-    tr td {
-      white-space: nowrap;
-    }
-
-    tr td:first-child {
-      max-width: 70vw;
-      white-space: unset;
-      word-break: break-all;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 0.3em;
-    }
+  .selected-result {
+    background-color: $warn;
   }
 }
 
-.results-footer {
-  position: fixed;
-  z-index: 10;
-  bottom: 0;
-  height: 1.5rem;
-  width: 100%;
-  max-width: 80vw;
-  margin-bottom: 0.25rem;
-  background-color: lightgray;
-}
-
-.clicked {
-  font-weight: bold;
+.no-results {
+  margin-top: 5rem;
 }

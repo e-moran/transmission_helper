@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchApiService } from '../search-api.service';
 import { Result, SearchResult} from '../searchresult';
-import { TransmissionService } from '../transmission.service';
 
 @Component({
   selector: 'app-search-results',
@@ -12,20 +11,20 @@ export class SearchResultsComponent implements OnInit {
 
   public _term: string;
   public searchResults: SearchResult;
-  public selectedArray: Result[] = [];
 
-  constructor(private searchApi: SearchApiService) {
-  }
-
-  ngOnInit() {
-  }
-
+  @Input() selectedArray: Result[] = [];
   @Input()
   set term(term: string) {
     if (term) {
       this._term = term;
       this.search();
     }
+  }
+
+  constructor(private searchApi: SearchApiService) {
+  }
+
+  ngOnInit() {
   }
 
   private search() {

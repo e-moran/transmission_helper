@@ -13,7 +13,14 @@ import { ServerConfigComponent } from './server-config/server-config.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule, MatDividerModule, MatFormFieldModule,
+  MatIconModule,
+  MatInputModule, MatListModule,
+  MatMenuModule, MatToolbarModule
+} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -38,13 +45,19 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(
         appRoutes,
-        { enableTracing: true }
+        {enableTracing: true}
     ),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
+    MatDividerModule,
+    MatFormFieldModule
   ],
   providers: [
     {

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "build": "tsc",
-    "dev": "ng build --watch & ts-node ./server/server.ts & corsproxy",
+    "dev": "ng build --watch & ts-node ./server/server.ts & CORSPROXY_HOST=192.168.0.17 corsproxy",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start"
   },

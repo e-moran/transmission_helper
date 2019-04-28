@@ -1,11 +1,16 @@
 <div class="search-wrap">
   <div class="search">
-    <form>
-      <label for="search">Search: </label> <br />
-      <input name="search" id="search" [(ngModel)]="tempTerm" /> &nbsp;
-      <input type="submit" (click)="onSearch()" />
-    </form>
+    <mat-card class="mat-elevation-z4">
+      <mat-card-content>
+        <mat-form-field>
+          <input class="toolbar-search" type="text" [(ngModel)]="tempTerm" (keyup.enter)="onSearch()" matInput />
+          <mat-placeholder>Search</mat-placeholder>
+          <mat-icon matSuffix style="font-size: 1.2em">search</mat-icon>
+        </mat-form-field>
+        <button mat-button (click)="onSearch()">Search</button>
+        <app-search-bottom-nav [selectedArray]="selectedArray"></app-search-bottom-nav>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <br />
-  <app-search-results [term]="term"></app-search-results>
+  <app-search-results [term]="term" [selectedArray]="selectedArray"></app-search-results>
 </div>
