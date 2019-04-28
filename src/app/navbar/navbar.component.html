@@ -1,0 +1,16 @@
+<mat-menu #appMenu="matMenu" [overlapTrigger]="false">
+  <button mat-menu-item routerLink="/config">Settings</button>
+  <button mat-menu-item>Sign Out</button>
+</mat-menu>
+
+<div class="navbar">
+  <mat-toolbar class="mat-elevation-z4">
+    <span>PLEX Control</span>
+    <button mat-button routerLink="/search" >Search</button>
+    <button mat-button routerLink="/status" >Status</button>
+    <span class="fill-space"></span>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>

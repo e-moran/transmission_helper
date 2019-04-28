@@ -1,0 +1,17 @@
+@import "../_variables.scss";
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 2rem;
+  z-index: 10;
+  top: 0;
+
+  mat-toolbar {
+    background-color: $accent;
+  }
+}
