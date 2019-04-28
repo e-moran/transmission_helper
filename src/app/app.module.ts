@@ -11,9 +11,13 @@ import { TransmissionInterceptor } from './transmission.interceptor';
 import { SearchBottomNavComponent } from './search-bottom-nav/search-bottom-nav.component';
 import { ServerConfigComponent } from './server-config/server-config.component';
 import { Routes, RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 
 const appRoutes: Routes = [
-  { path: '', component: SearchComponent },
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search', component: SearchComponent },
   { path: 'config', component: ServerConfigComponent }
 ];
 
@@ -23,7 +27,8 @@ const appRoutes: Routes = [
     SearchResultsComponent,
     SearchComponent,
     SearchBottomNavComponent,
-    ServerConfigComponent
+    ServerConfigComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
         appRoutes,
         { enableTracing: true }
-    )
+    ),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatCardModule
   ],
   providers: [
     {
