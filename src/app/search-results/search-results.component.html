@@ -1,16 +1,13 @@
 <div class="results-wrapper">
   <div class="results" *ngIf="_term && searchResults">
     <div class="results" *ngIf="searchResults.results.length > 0; else noResults;">
-      <mat-card [class.selected-result]="result.clicked" *ngFor="let result of searchResults.results" (click)="toggleTorrent(result)">
-        <mat-card-header>
-          <mat-card-title>{{ result.name }}</mat-card-title>
-          <mat-card-subtitle>
-            Speed: {{ result.seeds/result.leeches | number:'1.0-2' }} <br />
-            Size: {{ result.size }}
-          </mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-      <br />
+      <mat-list>
+        <mat-list-item [class.selected-result]="result.clicked" *ngFor="let result of searchResults.results" (click)="toggleTorrent(result)">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>{{ result.name }}</h4>
+          <p mat-line>Size; {{ result.size }} Speed: {{ result.seeds / result.leeches | number:'1.0-2' }}</p>
+        </mat-list-item>
+      </mat-list>
     </div>
     <ng-template #noResults>
       <div class="no-results"><h1>No Results!</h1></div>

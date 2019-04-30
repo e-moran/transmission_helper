@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { ServerConfigService } from '../server-config.service';
 import { ServerConfig } from '../serverconfig';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-server-config',
@@ -11,7 +12,7 @@ import { ServerConfig } from '../serverconfig';
 export class ServerConfigComponent implements OnInit {
   public configForm: FormGroup;
   public loaded = false;
-  constructor(private fb: FormBuilder, private configApi: ServerConfigService) { }
+  constructor(private fb: FormBuilder, private configApi: ServerConfigService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.configApi.getServerConfig().subscribe(val => {
@@ -44,7 +45,11 @@ export class ServerConfigComponent implements OnInit {
         newConfig.folders.splice(i, 1);
       }
     });
-    this.configApi.updateServerConfig(newConfig).subscribe();
+    this.configApi.updateServerConfig(newConfig).subscribe( () => {
+      this.snackBar.open('Server Configuration Saved', 'Dismiss', {
+        duration: 1500
+      });
+    });
   }
   public pushNewFolder() {
     this.folders.push(this.fb.group( {

@@ -3,17 +3,17 @@
 .results {
   max-width: 40rem;
   min-height: 5rem;
-  margin-top: 5rem;
+  margin-top: 4.2rem;
   padding: 0.5rem;
   z-index: 0;
 
-  mat-card {
-    margin-bottom: 10px;
-    background-color: $accent;
+  mat-list mat-list-item {
+    color: rgba(0, 0, 0, 0.64);
   }
 
-  .selected-result {
-    background-color: $warn;
+  .selected-result h4 {
+    color: black;
+    font-weight: bold;
   }
 }
 

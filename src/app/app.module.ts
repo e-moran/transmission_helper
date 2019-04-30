@@ -19,7 +19,7 @@ import {
   MatCheckboxModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatListModule,
-  MatMenuModule, MatProgressSpinnerModule, MatRadioModule, MatToolbarModule
+  MatMenuModule, MatProgressSpinnerModule, MatRadioModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { SearchAddDialogComponent } from './search-add-dialog/search-add-dialog.component';
 
@@ -64,7 +64,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [
     {
