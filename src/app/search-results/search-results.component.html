@@ -1,5 +1,5 @@
-<div class="results-wrapper" *ngIf="_term && searchResults">
-  <div class="results">
+<div class="results-wrapper">
+  <div class="results" *ngIf="_term && searchResults">
     <div class="results" *ngIf="searchResults.results.length > 0; else noResults;">
       <mat-card [class.selected-result]="result.clicked" *ngFor="let result of searchResults.results" (click)="toggleTorrent(result)">
         <mat-card-header>
@@ -15,5 +15,8 @@
     <ng-template #noResults>
       <span class="no-results">No Results!</span>
     </ng-template>
+  </div>
+  <div class="spinner" *ngIf="_term && !searchResults">
+    <mat-spinner></mat-spinner>
   </div>
 </div>

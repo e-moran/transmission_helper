@@ -17,6 +17,7 @@ export class SearchResultsComponent implements OnInit {
   set term(term: string) {
     if (term) {
       this._term = term;
+      this.searchResults = null;
       this.search();
     }
   }
