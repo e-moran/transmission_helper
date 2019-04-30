@@ -55,6 +55,7 @@ export class Routes {
                         response: 'success',
                         conf: config
                     });
+                    console.log('Successfully Served Server Config');
                 }).catch(error => {
                     res.json({
                         response: 'error',
@@ -68,6 +69,7 @@ export class Routes {
                 res.json({
                    success: controller.setServerConfig(),
                 });
+                console.log('Successfully Set Server Config');
             });
     }
 }
