@@ -30,6 +30,7 @@ export class ServerConfigService {
       return this.cachedConfig;
   }
   public updateServerConfig(conf: ServerConfig): Observable<any> {
+      this.cachedConfig = null;
       return this.http.post(this.setConfigUrl, conf);
   }
 }
