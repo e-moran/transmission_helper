@@ -1,22 +1,52 @@
-<form *ngIf="loaded" [formGroup]="configForm" (ngSubmit)="onSubmit()">
-
-    <label for="rpcUrl">RPC Url:</label>
-    <input type="text" id="rpcUrl" formControlName="rpcUrl" />
-    <br />
-    <label for="requiresAuth">Requires Auth:</label>
-    <input type="checkbox" id="requiresAuth" formControlName="requiresAuth" />
-    <br />
-    <label for="username">Username:</label>
-    <input type="text" id="username" formControlName="username" />
-    <br />
-    <label for="password">Password:</label>
-    <input type="text" id="password" formControlName="password" />
-    <br />
-    <label for="movieDirectory">Movies Directory:</label>
-    <input type="text" id="movieDirectory" formControlName="movieDirectory" />
-    <br />
-    <label for="tvDirectory">TV Directory:</label>
-    <input type="text" id="tvDirectory" formControlName="tvDirectory" />
-    <br />
-    <input type="submit">
-</form>
+<div class="config">
+    <mat-card>
+        <mat-card-content>
+            <form *ngIf="loaded else wait" [formGroup]="configForm">
+                <h4>Transmission Configuration:</h4>
+                <div formGroupName="transmissionConfig">
+                    <mat-checkbox formControlName="requiresAuth">Requires Auth:</mat-checkbox>
+                    <br />
+                    <mat-form-field>
+                        <mat-label>Username:</mat-label>
+                        <input matInput type="text" formControlName="username" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <mat-label>Password:</mat-label>
+                        <input matInput type="text" formControlName="password" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <mat-label>RPC Url:</mat-label>
+                        <input matInput type="text" formControlName="rpcUrl" />
+                    </mat-form-field>
+                    <br />
+                </div>
+                <h4>Folders:</h4>
+                <div formArrayName="folders">
+                    <div *ngFor="let folder of folders.controls; let i = index" [formGroupName]="i">
+                        <mat-form-field>
+                            <mat-label>Folder Name:</mat-label>
+                            <input matInput type="text" formControlName="name" />
+                        </mat-form-field>
+                        &nbsp;&nbsp;
+                        <mat-form-field>
+                            <mat-label>Folder Path:</mat-label>
+                            <input matInput type="text" formControlName="path" />
+                        </mat-form-field>
+                        &nbsp;&nbsp;
+                        <button mat-icon-button *ngIf="folders.length-1 === i" (click)="pushNewFolder()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <br />
+                    </div>
+                </div>
+                <br />
+                <button mat-button (click)="onSubmit()">Submit</button>
+            </form>
+            <ng-template #wait>
+                <mat-spinner></mat-spinner>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
+</div>

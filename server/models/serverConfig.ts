@@ -1,7 +1,6 @@
 export interface ServerConfig {
     transmissionConfig: TransmissionConfig;
-    moviesFolder: string;
-    tvShowsFolder: string;
+    folders: FilmType[];
 }
 
 export interface TransmissionConfig {
@@ -9,4 +8,9 @@ export interface TransmissionConfig {
     username: string;
     password: string;
     rpcUrl: string;
+}
+
+export interface FilmType {
+    name: string;
+    path: string;
 }

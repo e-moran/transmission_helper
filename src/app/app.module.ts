@@ -19,7 +19,7 @@ import {
   MatCheckboxModule, MatDividerModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatListModule,
-  MatMenuModule, MatToolbarModule
+  MatMenuModule, MatProgressSpinnerModule, MatToolbarModule
 } from '@angular/material';
 
 const appRoutes: Routes = [
@@ -57,7 +57,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatListModule,
     MatDividerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

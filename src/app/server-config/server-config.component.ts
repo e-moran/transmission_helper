@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { ServerConfigService } from '../server-config.service';
 import { ServerConfig } from '../serverconfig';
 
@@ -9,42 +9,48 @@ import { ServerConfig } from '../serverconfig';
   styleUrls: ['./server-config.component.scss']
 })
 export class ServerConfigComponent implements OnInit {
-  configForm = new FormGroup({
-    rpcUrl : new FormControl(''),
-    requiresAuth : new FormControl(false),
-    username : new FormControl(''),
-    password : new FormControl(''),
-    movieDirectory : new FormControl(''),
-    tvDirectory : new FormControl(''),
-  });
+  public configForm: FormGroup;
   public loaded = false;
-  constructor(private configApi: ServerConfigService) { }
+  constructor(private fb: FormBuilder, private configApi: ServerConfigService) { }
 
   ngOnInit() {
     this.configApi.getServerConfig().subscribe(val => {
-      this.configForm.setValue({
-        rpcUrl: val.transmissionConfig.rpcUrl,
-        requiresAuth: val.transmissionConfig.requiresAuth,
-        username: val.transmissionConfig.username,
-        password: val.transmissionConfig.password,
-        movieDirectory: val.moviesFolder,
-        tvDirectory: val.tvShowsFolder
+      console.log(val);
+      this.configForm = this.fb.group({
+        transmissionConfig: this.fb.group({
+          requiresAuth: [val.transmissionConfig.requiresAuth],
+          username: [val.transmissionConfig.username],
+          password: [val.transmissionConfig.password],
+          rpcUrl: [val.transmissionConfig.rpcUrl]
+        }),
+        folders: this.fb.array([])
+      });
+      val.folders.forEach(folder => {
+        this.folders.push(this.fb.group({
+          name: [folder.name],
+          path: [folder.path]
+        }));
       });
       this.loaded = true;
     });
   }
+  get folders() {
+    return this.configForm.get('folders') as FormArray;
+  }
   public onSubmit() {
-    const newConfig: ServerConfig = {
-      transmissionConfig: {
-        rpcUrl: this.configForm.get('rpcUrl').value,
-        requiresAuth: this.configForm.get('requiresAuth').value,
-        username: this.configForm.get('username').value,
-        password: this.configForm.get('password').value
-      },
-      moviesFolder: this.configForm.get('movieDirectory').value,
-      tvShowsFolder: this.configForm.get('tvDirectory').value
-    };
+    const newConfig: ServerConfig = this.configForm.value as ServerConfig;
+    newConfig.folders.forEach( (folder, i) => {
+      if (folder.path === '' || folder.name === '') {
+        newConfig.folders.splice(i, 1);
+      }
+    });
     this.configApi.updateServerConfig(newConfig).subscribe();
+  }
+  public pushNewFolder() {
+    this.folders.push(this.fb.group( {
+          name: [''],
+          path: ['']
+    }));
   }
 
 }
