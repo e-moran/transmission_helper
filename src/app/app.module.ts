@@ -16,11 +16,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDividerModule, MatFormFieldModule,
+  MatCheckboxModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatListModule,
-  MatMenuModule, MatProgressSpinnerModule, MatToolbarModule
+  MatMenuModule, MatProgressSpinnerModule, MatRadioModule, MatToolbarModule
 } from '@angular/material';
+import { SearchAddDialogComponent } from './search-add-dialog/search-add-dialog.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -35,8 +36,10 @@ const appRoutes: Routes = [
     SearchComponent,
     SearchBottomNavComponent,
     ServerConfigComponent,
-    NavbarComponent
+    NavbarComponent,
+    SearchAddDialogComponent
   ],
+  entryComponents: [SearchAddDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,7 +62,9 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [
     {

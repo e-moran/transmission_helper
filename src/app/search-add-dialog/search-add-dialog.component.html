@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Add {{ data.torrents.length }} Videos</h1>
+<div mat-dialog-content>
+    <p>Please select a destination:</p>
+    <mat-radio-group aria-label="Please select a destination folder:" *ngIf="folders; else noFolders;" [(ngModel)]="selection">
+        <div *ngFor="let folder of folders">
+            <mat-radio-button name="folders" [value]="folder">{{ folder.name }}</mat-radio-button>
+            <br />
+            <br />
+        </div>
+    </mat-radio-group>
+    <ng-template #noFolders>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button *ngIf="selection" [mat-dialog-close]="selection">Download</button>
+</div>
