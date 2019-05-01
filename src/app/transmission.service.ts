@@ -28,7 +28,7 @@ export class TransmissionService {
   public addTorrent(magnet: string, folder: FilmType) {
     this.configService.getServerConfig().toPromise().then(res => {
       const body = '{"arguments":{"filename":"' + magnet + '", "download-dir":"' + folder.path + '"},"method":"torrent-add"}';
-      this.http.post(this.generateUrl(res), body, this.getHttpOptions(res)).subscribe();
+      this.http.post(this.generateUrl(res), body, TransmissionService.getHttpOptions(res)).subscribe();
     });
   }
   public getStatus(config: ServerConfig): Observable<TorrentStatus[]> {
