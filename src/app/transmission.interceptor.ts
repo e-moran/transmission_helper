@@ -8,7 +8,6 @@ export class TransmissionInterceptor implements HttpInterceptor {
     private csrfToken = '';
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.url.includes('transmission')) {
-            console.log(req);
             return next.handle(this.applyCredentials(req)).pipe(
                 catchError((err: HttpErrorResponse) => {
                     if (err.status === 409) {

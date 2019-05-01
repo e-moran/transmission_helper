@@ -19,14 +19,19 @@ import {
   MatCheckboxModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatListModule,
-  MatMenuModule, MatProgressSpinnerModule, MatRadioModule, MatSnackBarModule, MatToolbarModule
+  MatMenuModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { SearchAddDialogComponent } from './search-add-dialog/search-add-dialog.component';
+import { StatusComponent } from './status/status.component';
+import { TorrentStatusPipe } from './torrent-status.pipe';
+import { SecondsPipe } from './seconds.pipe';
+import { FileSizePipe } from './file-size.pipe';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
-  { path: 'config', component: ServerConfigComponent }
+  { path: 'config', component: ServerConfigComponent },
+  { path: 'status', component: StatusComponent }
 ];
 
 @NgModule({
@@ -37,7 +42,11 @@ const appRoutes: Routes = [
     SearchBottomNavComponent,
     ServerConfigComponent,
     NavbarComponent,
-    SearchAddDialogComponent
+    SearchAddDialogComponent,
+    StatusComponent,
+    TorrentStatusPipe,
+    SecondsPipe,
+    FileSizePipe
   ],
   entryComponents: [SearchAddDialogComponent],
   imports: [
@@ -65,7 +74,8 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatDialogModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [
     {

@@ -1,0 +1,16 @@
+<mat-list>
+  <h3 mat-subheader>Downloads:</h3>
+  <mat-list-item *ngFor="let torrent of torrents;">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h3 mat-line>{{ torrent.name }}</h3>
+    <div mat-line>
+      <span>{{ torrent.percentDone | percent }} Complete</span>
+      <span *ngIf="(torrent.status === 4 || torrent.status === 5) && torrent.eta != -2"><br />ETA: {{ torrent.eta | seconds }} </span>
+      <span *ngIf="(torrent.status === 4 || torrent.status === 5) && torrent.eta == -2"><br />ETA Unavailable</span>
+    </div>
+    <mat-progress-bar mat-line mode="determinate" [value]="torrent.percentDone * 100" color="warn"></mat-progress-bar>
+    <div mat-line>
+      <button mat-button (click)="deleteTorrent(torrent.id)">Delete</button>
+    </div>
+  </mat-list-item>
+</mat-list>

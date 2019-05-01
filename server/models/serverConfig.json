@@ -1,1 +1,1 @@
-{"transmissionConfig":{"requiresAuth":true,"username":"user","password":"pass","rpcUrl":"localhost:9091/transmission/rpc"},"folders":[{"name":"Movies","path":"/PLEX/Movies"},{"name":"TV Shows","path":"/PLEX/TVShows"}]}
+{"transmissionConfig":{"requiresAuth":true,"username":"admin","password":"password","rpcUrl":"192.168.0.5:9091/transmission/rpc"},"folders":[{"name":"Movies","path":"/srv/dev-disk-by-label-store/PLEX/Movies"},{"name":"TV Shows","path":"/srv/dev-disk-by-label-store/PLEX/TV Shows/"}]}

@@ -18,4 +18,5 @@ export interface TransmissionConfig {
 export interface FilmType {
     name: string;
     path: string;
+    freeSpace: number;
 }
