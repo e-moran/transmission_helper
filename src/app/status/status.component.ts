@@ -10,6 +10,7 @@ import { TorrentStatus } from '../transmission-response';
 })
 export class StatusComponent implements OnInit {
   public torrents: TorrentStatus[];
+  public onlyShowUnfinished = false;
 
   constructor(private transmissionApi: TransmissionService, private configService: ServerConfigService) { }
 
