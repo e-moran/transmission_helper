@@ -25,11 +25,9 @@ export class SecondsPipe implements PipeTransform {
       timeString += SecondsPipe.pad(hours) + ':';
       remainingTime -= hours * 3600;
     }
-    if (value >= 60) {
-      const minutes: number = Math.floor( remainingTime / 60);
-      timeString += SecondsPipe.pad(minutes) + ':';
-      remainingTime -= minutes * 60;
-    }
+    const minutes: number = Math.floor( remainingTime / 60);
+    timeString += SecondsPipe.pad(minutes) + ':';
+    remainingTime -= minutes * 60;
     timeString += SecondsPipe.pad(remainingTime);
     return timeString;
   }
