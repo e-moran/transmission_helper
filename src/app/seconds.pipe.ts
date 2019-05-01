@@ -17,7 +17,7 @@ export class SecondsPipe implements PipeTransform {
     let remainingTime = value;
     if (value >= 86400) {
       const days: number = Math.floor(remainingTime / 86400);
-      timeString += SecondsPipe.pad(days) + ';';
+      timeString += SecondsPipe.pad(days) + ':';
       remainingTime -= days * 86400;
     }
     if (value >= 3600) {
