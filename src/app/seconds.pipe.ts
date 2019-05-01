@@ -30,7 +30,7 @@ export class SecondsPipe implements PipeTransform {
       timeString += this.pad(minutes) + ':';
       remainingTime -= minutes * 60;
     }
-    timeString += this.pad(remainingTime);
+    timeString += SecondsPipe.pad(remainingTime);
     return timeString;
   }
 
