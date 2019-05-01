@@ -17,17 +17,17 @@ export class SecondsPipe implements PipeTransform {
     let remainingTime = value;
     if (value >= 86400) {
       const days: number = Math.floor(remainingTime / 86400);
-      timeString += this.pad(days) + ';';
+      timeString += SecondsPipe.pad(days) + ';';
       remainingTime -= days * 86400;
     }
     if (value >= 3600) {
       const hours: number = Math.floor(remainingTime / 3600);
-      timeString += this.pad(hours) + ':';
+      timeString += SecondsPipe.pad(hours) + ':';
       remainingTime -= hours * 3600;
     }
     if (value >= 60) {
       const minutes: number = Math.floor( remainingTime / 60);
-      timeString += this.pad(minutes) + ':';
+      timeString += SecondsPipe.pad(minutes) + ':';
       remainingTime -= minutes * 60;
     }
     timeString += SecondsPipe.pad(remainingTime);
