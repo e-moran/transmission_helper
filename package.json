@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "build": "tsc",
-    "dev": "ng build --watch & ts-node ./server/server.ts & CORSPROXY_HOST=192.168.0.11 corsproxy",
+    "dev": "ng build --watch & ts-node ./server/server.ts & CORSPROXY_HOST=192.168.0.16 corsproxy",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start"
   },
@@ -22,6 +22,7 @@
     "@angular/router": "^7.2.14",
     "@types/express": "^4.16.1",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "core-js": "^2.6.5",
     "corsproxy": "^1.5.0",
     "express": "^4.16.4",

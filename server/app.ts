@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
+import * as compression from 'compression';
 import { Routes } from './routes/apiRoutes';
 
 class App {
@@ -15,6 +16,7 @@ class App {
     private config() {
         // support application/json type post data
         this.app.use(bodyParser.json());
+        this.app.use(compression());
 
         // support application/x-www-form-urlencoded post data
         this.app.use(bodyParser.urlencoded({ extended: false }));
