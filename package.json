@@ -6,7 +6,7 @@
     "build": "tsc",
     "dev": "ng build --watch & ts-node ./server/server.ts & CORSPROXY_HOST=192.168.0.16 corsproxy",
     "start": "nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start"
+    "prod": "ng build & ts-node ./server/server.ts & CORSPROXY_HOST=192.168.0.5 corsproxy"
   },
   "private": true,
   "dependencies": {
